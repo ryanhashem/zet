@@ -3,6 +3,7 @@
 #include <vector>
 #include <tuple>
 #include "newNote.hpp"
+#include "parse.hpp"
 
 using std::cout, std::endl, std::string, std::vector, std::tuple;
 
