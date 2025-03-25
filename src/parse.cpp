@@ -11,7 +11,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
     if (argc <= 1) {
 
         //TODO add exceptions
-        flags.push_back({"", ""});
+        flags.push_back({"bad", "input"});
         return flags;
     }
 
@@ -22,7 +22,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
     if (exe != "./zettal") {
 
         //TODO add exceptions
-        flags.push_back({"", ""});
+        flags.push_back({"bad", "input"});
         return flags;
     }
 
@@ -33,7 +33,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
     if (func != "file" && func != "folder" && func != "link") {
 
         //TODO add exceptions
-        flags.push_back({"", ""});
+        flags.push_back({"bad", "input"});
         return flags;
     }
 
@@ -49,11 +49,6 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
             //adds new flag to list
             flags.push_back({flag, flag_input});
         }
-    }
-
-    //test
-    for (int i = 0; i < flags.size(); i++) {
-        cout << "(" << std::get<0>(flags.at(i)) << ", " << std::get<1>(flags.at(i)) << ")" << endl;
     }
 
     return flags;
