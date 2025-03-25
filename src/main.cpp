@@ -11,6 +11,11 @@ using std::cout, std::endl, std::string, std::vector, std::tuple;
 //argc stores the number of parameters, argv is an array of c-strings
 int main(int argc, char* argv[]) {
 
+    vector<tuple<string, string>> parsedInput;
+
+    parsedInput = parse(argc, argv);
+
+    /*
     //must have at least two arguments
     if (argc <= 1) {
         return -1;
@@ -52,7 +57,7 @@ int main(int argc, char* argv[]) {
     //test
     for (int i = 0; i < flags.size(); i++) {
         cout << "(" << std::get<0>(flags.at(i)) << ", " << std::get<1>(flags.at(i)) << ")" << endl;
-    }
+    }*/
 
     return 0;
 }
