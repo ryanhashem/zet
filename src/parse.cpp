@@ -9,10 +9,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
 
     //must have at least two arguments
     if (argc <= 1) {
-
-        //TODO add exceptions
-        flags.push_back({"bad", "input"});
-        return flags;
+        throw std::runtime_error("No function called.");
     }
 
     //name of exectuable
@@ -20,10 +17,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
 
     //executable must be named zettal
     if (exe != "./zettal") {
-
-        //TODO add exceptions
-        flags.push_back({"bad", "input"});
-        return flags;
+        throw std::runtime_error("Executable must be named zettal");
     }
 
     //name of function
@@ -31,15 +25,11 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
 
     //must be a valid function
     if (func != "file" && func != "folder" && func != "link") {
-
-        //TODO add exceptions
-        flags.push_back({"bad", "input"});
-        return flags;
+        throw std::runtime_error("Invalid function called.");
     }
 
     //loops through the flags
     for (int i = 2; i < argc; i++) {
-
         //inserts flag
         if ((i % 2) == 0) {
 

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 #include <tuple>
@@ -13,7 +14,13 @@ int main(int argc, char* argv[]) {
 
     //stores parsed input in a vector of tuples
     vector<tuple<string, string>> parsedInput;
-    parsedInput = parse(argc, argv);
+
+    
+    try{
+        parsedInput = parse(argc, argv);
+    } catch (const std::runtime_error & e) {
+        cout << e.what() << endl;
+    }
 
     //test
     for (int i = 0; i < parsedInput.size(); i++) {
