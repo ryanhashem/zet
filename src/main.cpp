@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
     //stores parsed input in a vector of tuples
     vector<tuple<string, string>> parsedInput;
 
-    
+    //tries to parse input
     try{
         parsedInput = parse(argc, argv);
     } catch (const std::runtime_error & e) {
