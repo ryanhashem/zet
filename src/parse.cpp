@@ -25,7 +25,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
     string func = argv[1];
 
     //must be a valid function
-    if (func != "file" && func != "folder" && func != "link") {
+    if (func != "link" && func != "view") {
         throw std::runtime_error("Invalid function called.");
     }
 
@@ -57,38 +57,10 @@ bool validFlags(int argc, char* argv[]) {
     string func = argv[1];
 
     //checks the flag depending on the name of the function 
-    if (func == "file") {
-        return validFileFlags(argc, argv);
-    } else if (func == "folder") {
-        return validFolderFlags(argc, argv);
-    } else if (func == "link"){
+    if (func == "link") {
         return validLinkFlags(argc, argv);
-    } else {
-        return false;
-    }
-}
-
-//checks if flags are valid for the file function
-bool validFileFlags(int argc, char* argv[]) {
-
-    //TODO add logic to check for validity
-    cout << "File function called" << endl;
-
-    if ((argc % 2) == 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-//checks if flags are valid for the folder function
-bool validFolderFlags(int argc, char* argv[]) {
-
-    //TODO add logic to check for validity
-    cout << "Folder function called" << endl;
-
-    if ((argc % 2) == 0) {
-        return true;
+    } else if (func == "view") {
+        return validViewFlags(argc, argv);
     } else {
         return false;
     }
@@ -99,6 +71,19 @@ bool validLinkFlags(int argc, char* argv[]) {
 
     //TODO add logic to check for validity
     cout << "Link function called" << endl;
+
+    if ((argc % 2) == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//checks if flags are valid for the view function
+bool validViewFlags(int argc, char* argv[]) {
+
+    //TODO add logic to check for validity
+    cout << "View function called" << endl;
 
     if ((argc % 2) == 0) {
         return true;
