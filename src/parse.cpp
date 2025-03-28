@@ -69,6 +69,16 @@ bool validFlags(int argc, char* argv[]) {
 //checks if flags are valid for the link function
 bool validLinkFlags(int argc, char* argv[]) {
 
+
+    /*
+    MUST HAVE -f: name of the current file to link
+
+    MUST HAVE -d: the name of the file you want to link the current file to. Can take in multiple inputs.
+    
+    -s means to link the file in one direction only. This means to link the desired file to the current file, but don't link the current file to the desired file. Essentially, the current file will point to the desired file, but the desired file won't point back to the current file
+    */
+
+
     //TODO add logic to check for validity
     cout << "Link function called" << endl;
 
