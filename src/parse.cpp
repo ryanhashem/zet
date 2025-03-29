@@ -5,6 +5,8 @@ using std::cout, std::endl;
 //parses the input
 vector<tuple<string, string>> parse(int argc, char* argv[]) {
 
+    //PROBLEM: the tuple should contain a string and a list of strings, instead of a string and a string. this is so that flags with multiple arguments can be stored
+
     //vector of tuples to hold each flag and it's input
     vector<tuple<string, string>> flags;
 
@@ -34,6 +36,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
         throw std::runtime_error("Invalid flags.");
     }
 
+    /*
     //loops through the flags
     for (int i = 2; i < argc; i++) {
         //inserts flag
@@ -45,7 +48,7 @@ vector<tuple<string, string>> parse(int argc, char* argv[]) {
             //adds new flag to list
             flags.push_back({flag, flag_input});
         }
-    }
+    }*/
 
     return flags;
 }
@@ -78,22 +81,52 @@ bool validLinkFlags(int argc, char* argv[]) {
     -s means to link the file in one direction only. This means to link the desired file to the current file, but don't link the current file to the desired file. Essentially, the current file will point to the desired file, but the desired file won't point back to the current file. If -s isn't included, it will link the file both ways as default
     */
 
+    //files cannot start with '-'
 
-    //TODO add logic to check for validity
-    cout << "Link function called" << endl;
+    //stores the valid flags only (not their inputs)
+    vector<string> flags;
 
-    if ((argc % 2) == 0) {
-        return true;
-    } else {
-        return false;
+    for (int i = 2; i < argc; i++) {
+        
+        //stores the current argument
+        string currArg = argv[i];
+
+        //checks if it is a flag
+        if (currArg[0] == '-') {
+
+            //returns false if the flag is invalid
+            if (currArg != "-f" && currArg != "-d" && currArg != "-s") {
+                return false;
+
+            //adds the valid flag to the list of flags
+            } else {
+                flags.push_back(currArg);
+            }
+        }
     }
+
+    //TODO: figure out how to make sure inputs are valid for each flag
+
+    //test
+    cout << "[";
+    for (int i = 0; i < flags.size(); i++) {
+
+        if (i == (flags.size() - 1)) {
+            cout << flags[i];
+        } else {
+            cout << flags[i] << ", ";
+        }
+    }
+    cout << "]" << endl;
+
+    return true;
 }
 
 //checks if flags are valid for the view function
 bool validViewFlags(int argc, char* argv[]) {
 
     /*
-    no flags: show the files tat are linked both ways to the current file
+    no flags: show the files that are linked both ways to the current file
 
     -t: show the files that the current file "points to"
 

@@ -22,10 +22,12 @@ int main(int argc, char* argv[]) {
         cout << e.what() << endl;
     }
 
+    /*
     //test
     for (int i = 0; i < parsedInput.size(); i++) {
         cout << "(" << std::get<0>(parsedInput.at(i)) << ", " << std::get<1>(parsedInput.at(i)) << ")" << endl;
     }
+    */
 
     return 0;
 }
