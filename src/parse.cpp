@@ -75,7 +75,7 @@ bool validLinkFlags(int argc, char* argv[]) {
 
     MUST HAVE -d: the name of the file you want to link the current file to. Can take in multiple inputs.
     
-    -s means to link the file in one direction only. This means to link the desired file to the current file, but don't link the current file to the desired file. Essentially, the current file will point to the desired file, but the desired file won't point back to the current file
+    -s means to link the file in one direction only. This means to link the desired file to the current file, but don't link the current file to the desired file. Essentially, the current file will point to the desired file, but the desired file won't point back to the current file. If -s isn't included, it will link the file both ways as default
     */
 
 
@@ -91,6 +91,16 @@ bool validLinkFlags(int argc, char* argv[]) {
 
 //checks if flags are valid for the view function
 bool validViewFlags(int argc, char* argv[]) {
+
+    /*
+    no flags: show the files tat are linked both ways to the current file
+
+    -t: show the files that the current file "points to"
+
+    -f: show the files "pointing to" the current file
+
+    -tf: show the files the current file is pointing to and the files 
+    */
 
     //TODO add logic to check for validity
     cout << "View function called" << endl;
